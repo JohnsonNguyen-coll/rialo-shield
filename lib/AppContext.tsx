@@ -30,7 +30,7 @@ export interface UserLP {
   address: string
 }
 
-interface MockContextType {
+interface AppContextType {
   isConnected: boolean
   address: string | null
   rloBalance: number
@@ -46,9 +46,9 @@ interface MockContextType {
   faucetLimitReached: boolean
 }
 
-const MockContext = createContext<MockContextType | undefined>(undefined)
+const AppContext = createContext<AppContextType | undefined>(undefined)
 
-export function MockProvider({ children }: { children: React.ReactNode }) {
+export function AppProvider({ children }: { children: React.ReactNode }) {
   const { address: wagmiAddress, isConnected: wagmiIsConnected } = useAccount()
   const [rloBalance, setRloBalance] = useState(0)
   const [usdcBalance, setUsdcBalance] = useState(1000)
@@ -80,7 +80,7 @@ export function MockProvider({ children }: { children: React.ReactNode }) {
         setUserLP(null)
       }
 
-      // Load Pool Metrics (Global-ish mock)
+      // Load Pool Metrics (Global persistence)
       const globalPool = localStorage.getItem('rialo_global_pool')
       if (globalPool) {
         setPoolMetrics(JSON.parse(globalPool))
@@ -182,7 +182,7 @@ export function MockProvider({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <MockContext.Provider value={{
+    <AppContext.Provider value={{
       isConnected: !!wagmiIsConnected,
       address: wagmiAddress || null,
       rloBalance,
@@ -195,17 +195,17 @@ export function MockProvider({ children }: { children: React.ReactNode }) {
       activateProtection,
       addLiquidity,
       refreshRates,
-      faucetLimitReached: false // We use the return value of faucet() to show message
+      faucetLimitReached: false // We use the return value of faucet() to show status
     }}>
       {children}
-    </MockContext.Provider>
+    </AppContext.Provider>
   )
 }
 
-export function useMock() {
-  const context = useContext(MockContext)
+export function useApp() {
+  const context = useContext(AppContext)
   if (context === undefined) {
-    throw new Error('useMock must be used within a MockProvider')
+    throw new Error('useApp must be used within an AppProvider')
   }
   return context
 }

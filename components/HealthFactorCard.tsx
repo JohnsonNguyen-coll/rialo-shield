@@ -1,15 +1,14 @@
 'use client'
 
 import React from 'react'
-import { useMock } from '@/lib/mockContext'
+import { useApp, ShieldPosition } from '@/lib/AppContext'
 import { Activity, AlertTriangle, ShieldCheck } from 'lucide-react'
 
 export default function HealthFactorCard() {
-  const { positions } = useMock()
+  const { positions } = useApp()
   
-  // Mock health factor calculation - ideally it would be (Collateral * LP Price) / (Borrowed * Rate)
   const avgHealthFactor = positions.length > 0 
-    ? positions.reduce((acc, p) => acc + p.healthFactor, 0) / positions.length 
+    ? positions.reduce((acc: number, p: ShieldPosition) => acc + p.healthFactor, 0) / positions.length 
     : 0
 
   const getStatusColor = (hf: number) => {
@@ -27,10 +26,10 @@ export default function HealthFactorCard() {
   }
 
   return (
-    <div className="card bg-white/[0.03] border-white/5 overflow-hidden relative">
+    <div className="card bg-[#0A0A0A] border-[#1F1F1F] overflow-hidden relative">
       <div className="flex items-center justify-between mb-6">
         <h3 className="text-lg font-black text-white flex items-center">
-          <Activity className="w-5 h-5 mr-2 text-pink-500" />
+          <Activity className="w-5 h-5 mr-2 text-[#E6E4D5]" />
           Health Factor
         </h3>
         <ShieldCheck className="w-5 h-5 text-white/20" />

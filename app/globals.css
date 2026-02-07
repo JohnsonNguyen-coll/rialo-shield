@@ -1,71 +1,71 @@
-/* globals.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --app-bg: #000000;
+  --card-bg: #0A0A0A;
+  --card-border: #1F1F1F;
+  --accent-primary: #E6E4D5;
+  --accent-secondary: #BDBBB0;
+  --text-primary: #FFFFFF;
+  --text-secondary: #A3A3A3;
+}
+
 @layer base {
   body {
-    @apply bg-gradient-to-br from-purple-950 via-purple-900 to-indigo-950 text-white min-h-screen;
+    background-color: var(--app-bg);
+    color: var(--text-primary);
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
   }
 }
 
 @layer components {
   .card {
-    @apply bg-purple-900/40 backdrop-blur-sm border border-purple-700/30 rounded-2xl shadow-xl p-6;
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   }
-  
+
   .btn-primary {
-    @apply bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold py-3 px-6 rounded-full 
-           hover:from-pink-600 hover:to-purple-700 transition-all duration-200 
-           shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed;
+    background-color: var(--accent-primary);
+    color: white;
+    font-weight: 700;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    transition: all 0.2s;
   }
-  
+
+  .btn-primary:hover {
+    filter: brightness(1.1);
+  }
+
   .btn-secondary {
-    @apply bg-purple-800/50 text-white font-semibold py-3 px-6 rounded-xl 
-           border-2 border-purple-600/50 hover:border-purple-500 hover:bg-purple-700/50
-           transition-all duration-200 shadow-sm hover:shadow-md;
+    background-color: transparent;
+    border: 1px solid var(--card-border);
+    color: var(--text-secondary);
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    transition: all 0.2s;
   }
-  
-  .input-field {
-    @apply w-full px-4 py-3 rounded-xl border-2 border-purple-700/50 bg-purple-900/30
-           focus:border-purple-500 focus:ring-2 focus:ring-purple-500/50 
-           transition-all duration-200 outline-none text-white placeholder-purple-400;
+
+  .btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: white;
+    border-color: var(--text-secondary);
   }
 }
 
-/* Decorative background elements */
-.bg-decorative-1 {
-  position: fixed;
-  top: 5rem;
-  right: 5rem;
-  width: 24rem;
-  height: 24rem;
-  background: rgba(168, 85, 247, 0.2);
-  border-radius: 50%;
-  filter: blur(80px);
-  pointer-events: none;
-  z-index: 0;
-}
-
-.bg-decorative-2 {
-  position: fixed;
-  bottom: 5rem;
-  left: 5rem;
-  width: 20rem;
-  height: 20rem;
-  background: rgba(99, 102, 241, 0.2);
-  border-radius: 50%;
-  filter: blur(80px);
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* Animation */
 @keyframes fade-in {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(8px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -73,5 +73,23 @@
 }
 
 .animate-fade-in {
-  animation: fade-in 0.5s ease-out;
+  animation: fade-in 0.4s ease-out forwards;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--app-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--card-border);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4B5563;
 }

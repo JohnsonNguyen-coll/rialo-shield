@@ -1,9 +1,9 @@
 {
-  "name": "arcshield-frontend",
+  "name": "rialo-shield-frontend",
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "set NODE_OPTIONS=--max-old-space-size=4096 && next dev --webpack",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
