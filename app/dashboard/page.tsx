@@ -3,11 +3,11 @@
 import React, { useState, useEffect } from 'react'
 import { Shield, Settings, Wallet, Droplets, LayoutDashboard, Coins, Zap, RefreshCw, LogOut } from 'lucide-react'
 import { useApp } from '@/lib/AppContext'
-import ProtectionPanel from '@/components/ProtectionPanel'
-import PositionDashboard from '@/components/PositionDashboard'
-import HealthFactorCard from '@/components/HealthFactorCard'
-import PriceDisplay from '@/components/PriceDisplay'
-import AddLiquidity from '@/components/AddLiquidity'
+import ProtectionPanel from '../../components/ProtectionPanel'
+import PositionDashboard from '../../components/PositionDashboard'
+import HealthFactorCard from '../../components/HealthFactorCard'
+import PriceDisplay from '../../components/PriceDisplay'
+import AddLiquidity from '../../components/AddLiquidity'
 import Link from 'next/link'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
 
@@ -44,7 +44,7 @@ export default function Dashboard() {
   return (
     <main className="min-h-screen bg-[#E6E4D5] text-black selection:bg-black/10 pb-20 font-sans">
       {faucetMessage && (
-        <div className="fixed top-24 left-1/2 -translate-x-1/2 z-[100] bg-black text-[#E6E4D5] px-6 py-3 rounded-xl shadow-2xl font-bold text-sm animate-fade-in">
+        <div className="fixed top-24 left-1/2 -translate-x-1/2 z-[100] bg-black text-[#E6E4D5] px-6 py-3 rounded-xl shadow-2xl font-semibold text-sm animate-fade-in">
           {faucetMessage}
         </div>
       )}
@@ -52,12 +52,8 @@ export default function Dashboard() {
       {/* Header */}
       <header className="sticky top-0 z-50 bg-[#E6E4D5]/90 backdrop-blur-md border-b border-black/10 py-4 px-6">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <Link href="/" className="flex items-center space-x-3 group">
-            <img src="/favicon.jpg" alt="Logo" className="w-8 h-8 rounded-lg shadow-md overflow-hidden object-cover" />
-            <div>
-              <h1 className="text-xl font-black tracking-tighter leading-none text-black">RIALO</h1>
-              <span className="text-[10px] font-black uppercase tracking-[0.2em] text-black/40">Shield Protocol</span>
-            </div>
+          <Link href="/" className="flex items-center transition-transform hover:scale-105">
+            <img src="/favicon.jpg" alt="Logo" className="w-[140px] h-[102px] object-contain" />
           </Link>
 
           <div className="flex items-center space-x-4">
@@ -65,10 +61,10 @@ export default function Dashboard() {
               <>
                 <div className="hidden md:flex items-center space-x-4 bg-white border border-black/10 rounded-xl px-4 py-2 shadow-sm">
                   <div className="flex flex-col items-end">
-                    <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Your Balance</span>
+                    <span className="text-[9px] font-medium text-slate-400 uppercase tracking-widest">Your Balance</span>
                     <div className="flex items-center space-x-3">
-                      <span className="text-sm font-black text-black">{rloBalance.toFixed(2)} RLO</span>
-                      <span className="text-sm font-bold text-green-600">{usdcBalance.toFixed(2)} USDC</span>
+                      <span className="text-sm font-semibold text-black">{rloBalance.toFixed(2)} RLO</span>
+                      <span className="text-sm font-medium text-green-600">{usdcBalance.toFixed(2)} USDC</span>
                     </div>
                   </div>
                   <button 
@@ -90,17 +86,17 @@ export default function Dashboard() {
       <div className="max-w-7xl mx-auto px-6 mt-12 relative z-10">
         {!isConnected ? (
           <div className="flex flex-col items-center justify-center py-32 text-center animate-fade-in">
-             <div className="w-20 h-20 bg-white border border-black/10 rounded-2xl flex items-center justify-center mb-8 shadow-xl">
-                <img src="/favicon.jpg" alt="Logo" className="w-12 h-12 rounded-lg" />
+             <div className="mb-8 flex items-center justify-center">
+                <img src="/favicon.jpg" alt="Logo" className="w-[200px] h-[146px] object-contain" />
              </div>
-             <h2 className="text-3xl font-black mb-4 uppercase tracking-tighter">Connect to RialoShield</h2>
-             <p className="text-slate-600 max-w-sm mx-auto mb-10 text-base font-medium leading-relaxed">
-               Secure your digital assets against currency volatility. Connect your wallet via RainbowKit to begin.
-             </p>
-             <div className="flex justify-center py-4">
-                <ConnectButton />
-             </div>
-             <p className="mt-8 text-[10px] font-bold text-slate-600 uppercase tracking-[0.3em]">Secure Mainnet Environment</p>
+              <h2 className="text-3xl font-bold mb-4 tracking-tight">Connect to RialoShield</h2>
+              <p className="text-slate-600 max-w-sm mx-auto mb-10 text-base font-medium leading-relaxed">
+                Secure your digital assets against currency volatility. Connect your wallet via RainbowKit to begin.
+              </p>
+              <div className="flex justify-center py-4">
+                 <ConnectButton />
+              </div>
+              <p className="mt-8 text-[10px] font-medium text-slate-600 uppercase tracking-[0.3em]">Secure Mainnet Environment</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 animate-fade-in">
@@ -111,30 +107,30 @@ export default function Dashboard() {
               {/* Oracle Price Feed Card */}
                <div className="card border-black/10 bg-white shadow-xl">
                 <div className="flex items-center justify-between mb-6">
-                  <h3 className="text-sm font-black text-black flex items-center uppercase tracking-wider">
+                  <h3 className="text-sm font-bold text-black flex items-center uppercase tracking-wider">
                     <RefreshCw className={`w-4 h-4 mr-2 text-black ${isRefreshing ? 'animate-spin' : ''}`} />
-                    Market Exchange Rates
+                    Market exchange rates
                   </h3>
-                  <span className="text-[10px] font-bold text-green-500 uppercase tracking-widest bg-green-500/10 px-2 py-0.5 rounded">Live</span>
+                  <span className="text-[10px] font-medium text-green-500 tracking-wide bg-green-500/10 px-2 py-0.5 rounded">Live</span>
                 </div>
                 <div className="space-y-4">
                   <PriceDisplay currency="BRL" />
                   <PriceDisplay currency="MXN" />
                   <PriceDisplay currency="EUR" />
                 </div>
-                <div className="mt-6 pt-6 border-t border-[#1F1F1F]">
-                  <p className="text-[10px] text-slate-500 font-medium text-center uppercase tracking-widest">
-                    Oracle Data provided by ExchangeRate-API
+                <div className="mt-6 pt-6 border-t border-black/10">
+                  <p className="text-[10px] text-slate-500 font-medium text-center tracking-wide">
+                    Oracle data provided by ExchangeRate-API
                   </p>
                 </div>
               </div>
 
               <div className="p-8 rounded-2xl bg-white border border-black/10 shadow-xl">
-                <h4 className="font-black text-black mb-2 uppercase tracking-wide">Need RLO?</h4>
+                <h4 className="font-bold text-black mb-2 uppercase tracking-wider">Need RLO?</h4>
                 <p className="text-xs text-slate-500 font-medium mb-6 leading-relaxed">Use our faucet to get RLO tokens for testing the protection protocol.</p>
                 <button 
                   onClick={handleFaucet}
-                  className="w-full py-3 bg-black text-[#E6E4D5] rounded-xl font-black text-sm hover:brightness-110 active:scale-95 transition-all shadow-lg"
+                  className="w-full py-3 bg-black text-[#E6E4D5] rounded-xl font-semibold text-sm hover:brightness-110 active:scale-95 transition-all shadow-lg"
                 >
                   Claim 1,000 RLO
                 </button>
@@ -147,7 +143,7 @@ export default function Dashboard() {
                <div className="flex p-1 bg-white border border-black/10 rounded-2xl w-fit shadow-lg">
                 <button 
                   onClick={() => setActiveTab('position')}
-                  className={`flex items-center space-x-2 px-6 py-3 rounded-xl text-sm font-black transition-all ${
+                  className={`flex items-center space-x-2 px-6 py-3 rounded-xl text-sm font-semibold transition-all ${
                     activeTab === 'position' 
                     ? 'bg-black text-[#E6E4D5] shadow-xl' 
                     : 'text-slate-400 hover:text-black'
@@ -158,7 +154,7 @@ export default function Dashboard() {
                 </button>
                 <button 
                   onClick={() => setActiveTab('liquidity')}
-                  className={`flex items-center space-x-2 px-6 py-3 rounded-xl text-sm font-black transition-all ${
+                  className={`flex items-center space-x-2 px-6 py-3 rounded-xl text-sm font-semibold transition-all ${
                     activeTab === 'liquidity' 
                     ? 'bg-black text-[#E6E4D5] shadow-xl' 
                     : 'text-slate-400 hover:text-black'
@@ -184,7 +180,7 @@ export default function Dashboard() {
         )}
       </div>
 
-      <footer className="mt-20 py-8 text-center text-[10px] font-bold text-slate-600 uppercase tracking-[0.4em]">
+      <footer className="mt-20 py-8 text-center text-[10px] font-medium text-slate-600 tracking-wide">
         Rialo Shield • Powered by RLO • Mainnet Environment
       </footer>
     </main>

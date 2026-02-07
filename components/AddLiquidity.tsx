@@ -10,7 +10,7 @@ export default function AddLiquidity() {
 
   const handleAdd = () => {
     const rlo = parseFloat(rloAmount)
-    if (!isNaN(rlo) && rlo >= 1000 && rlo <= rloBalance) {
+    if (!isNaN(rlo) && rlo >= 500 && rlo <= rloBalance) {
       addLiquidity(rlo)
       setRloAmount('')
     }
@@ -26,7 +26,7 @@ export default function AddLiquidity() {
           { label: 'Reserved', value: poolMetrics.reservedFunds.toLocaleString() + ' RLO', color: 'text-yellow-600' },
           { label: 'LP Capital', value: poolMetrics.totalLPCapital.toLocaleString() + ' RLO', color: 'text-black/60' },
         ].map((m, i) => (
-          <div key={i} className="card bg-white border-black/10 p-4 py-6 text-center shadow-xl">
+          <div key={i} className="card bg-white border-black/10 p-4 py-2 text-center shadow-xl">
             <div className="text-[10px] font-black tracking-widest text-slate-400 uppercase mb-2">{m.label}</div>
             <div className={`text-sm font-black ${m.color}`}>{m.value}</div>
           </div>
@@ -62,7 +62,7 @@ export default function AddLiquidity() {
                   type="number"
                   value={rloAmount}
                   onChange={(e) => setRloAmount(e.target.value)}
-                  placeholder="Min. 1,000"
+                  placeholder="Min. 500"
                   className="w-full bg-white border border-black/10 rounded-xl px-6 py-4 text-xl font-black text-black outline-none focus:border-black transition-all shadow-inner"
                 />
                 <button 
@@ -94,12 +94,12 @@ export default function AddLiquidity() {
             <div className="p-4 rounded-xl bg-[#E6E4D5]/5 border border-[#E6E4D5]/10 flex items-start space-x-3">
               <Info className="w-4 h-4 text-[#E6E4D5] mt-0.5 shrink-0" />
               <div className="text-[11px] text-slate-400 leading-relaxed font-medium">
-                Rewards are calculated based on 80% protocol fees. Minimum deposit: 1,000 RLO.
+                Rewards are calculated based on 80% protocol fees. Minimum deposit: 500 RLO.
               </div>
             </div>
 
             <button
-              disabled={!rloAmount || parseFloat(rloAmount) < 1000 || parseFloat(rloAmount) > rloBalance}
+              disabled={!rloAmount || parseFloat(rloAmount) < 500 || parseFloat(rloAmount) > rloBalance}
               onClick={handleAdd}
               className="w-full py-4 bg-black text-[#E6E4D5] rounded-xl font-black text-base hover:brightness-110 active:scale-[0.98] disabled:opacity-30 disabled:grayscale transition-all shadow-2xl uppercase tracking-widest"
             >
@@ -139,8 +139,8 @@ export default function AddLiquidity() {
               </div>
            </div>
 
-           <div className="p-6 rounded-2xl border border-[#1F1F1F] bg-[#0A0A0A]">
-              <h4 className="text-[10px] font-bold text-slate-400 mb-2 uppercase tracking-tight">Reward Strategy</h4>
+           <div className="p-6 rounded-2xl border border-black/10 bg-white shadow-xl">
+              <h4 className="text-[10px] font-semibold text-slate-400 mb-2 tracking-tight">Reward Strategy</h4>
               <p className="text-[11px] text-slate-500 leading-relaxed font-medium">
                  Yield is generated from protocol fees (1% entry fee). 80% is distributed to LPs based on their share of the pool.
               </p>

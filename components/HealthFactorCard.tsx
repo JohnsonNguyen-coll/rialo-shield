@@ -28,26 +28,26 @@ export default function HealthFactorCard() {
   return (
     <div className="card bg-white border-black/10 overflow-hidden relative shadow-xl">
       <div className="flex items-center justify-between mb-6">
-        <h3 className="text-lg font-black text-black flex items-center uppercase tracking-wide">
+        <h3 className="text-lg font-bold text-black flex items-center uppercase tracking-wider">
           <Activity className="w-5 h-5 mr-2 text-black" />
           Health Factor
         </h3>
         <ShieldCheck className="w-5 h-5 text-black/20" />
       </div>
 
-      <div className="text-center py-6">
-        <div className={`text-6xl font-black mb-2 transition-all duration-700 ${getStatusColor(avgHealthFactor)}`}>
+      <div className="text-center py-2">
+        <div className={`text-6xl font-semibold mb-2 transition-all duration-700 ${getStatusColor(avgHealthFactor)}`}>
           {avgHealthFactor === 0 ? '--' : avgHealthFactor.toFixed(2)}
         </div>
-        <div className={`inline-flex items-center px-4 py-1 rounded-full border text-[10px] font-black uppercase tracking-widest ${getStatusBg(avgHealthFactor)} ${getStatusColor(avgHealthFactor)}`}>
-          {avgHealthFactor === 0 ? 'No Data' : avgHealthFactor < 1.1 ? 'DANGER' : avgHealthFactor < 1.5 ? 'WARNING' : 'SECURE'}
+        <div className={`inline-flex items-center px-4 py-1 rounded-full border text-[10px] font-semibold tracking-wide ${getStatusBg(avgHealthFactor)} ${getStatusColor(avgHealthFactor)}`}>
+          {avgHealthFactor === 0 ? 'No data' : avgHealthFactor < 1.1 ? 'Danger' : avgHealthFactor < 1.5 ? 'Warning' : 'Secure'}
         </div>
       </div>
 
       <div className="mt-8 space-y-3">
-        <div className="flex justify-between text-xs font-bold">
-          <span className="text-black/40">Liquidation Threshold</span>
-          <span className="text-black/80 font-black">1.05</span>
+        <div className="flex justify-between text-xs font-medium">
+          <span className="text-black/40">Liquidation threshold</span>
+          <span className="text-black/80 font-semibold">1.05</span>
         </div>
         <div className="w-full h-2 bg-black/5 rounded-full overflow-hidden">
           <div 
@@ -55,7 +55,7 @@ export default function HealthFactorCard() {
             style={{ width: `${Math.min((avgHealthFactor / 2.5) * 100, 100)}%` }}
           />
         </div>
-        <p className="text-[10px] text-black/30 font-bold leading-tight uppercase tracking-tight">
+        <p className="text-[10px] text-black/30 font-medium leading-tight tracking-tight">
           If your health factor drops below 1.05, your RLO collateral will be liquidated to repay the debt.
         </p>
       </div>

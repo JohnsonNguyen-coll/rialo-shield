@@ -8,38 +8,34 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen bg-[#E6E4D5] text-black selection:bg-black/10 overflow-x-hidden font-sans">
       {/* Navigation */}
-      <nav className="relative z-50 flex items-center justify-between px-6 py-6 max-w-7xl mx-auto border-b border-black/10">
-        <div className="flex items-center space-x-3">
-          <Link href="/" className="flex items-center space-x-2 transition-transform hover:scale-105">
-            <img src="/favicon.jpg" alt="Rialo Shield Logo" className="w-10 h-10 rounded-xl shadow-md overflow-hidden object-cover" />
-            <span className="text-xl font-black tracking-tighter uppercase">
-              Rialo Shield
-            </span>
+      <nav className="relative z-50 flex items-center justify-between px-6 py-2 max-w-7xl mx-auto border-b border-black/10">
+          <Link href="/" className="flex items-center transition-transform hover:scale-105">
+            <img src="/favicon.jpg" alt="Logo" className="w-[140px] h-[102px] object-contain" />
           </Link>
+        <div className="hidden md:flex items-center space-x-10 text-base font-medium tracking-wide text-black/60">
+          <a href="#features" className="hover:text-black transition-colors">Features</a>
+          <a href="#protection" className="hover:text-black transition-colors">Protocol</a>
+          <a href="#liquidity" className="hover:text-black transition-colors">Ecosystem</a>
         </div>
-        <div className="hidden md:flex items-center space-x-8 text-sm font-semibold text-slate-400">
-          <a href="#features" className="hover:text-white transition-colors">Features</a>
-          <a href="#protection" className="hover:text-white transition-colors">Protocol</a>
-          <a href="#liquidity" className="hover:text-white transition-colors">Ecosystem</a>
-        </div>
-        <Link href="/dashboard" className="group flex items-center space-x-2 bg-black text-[#E6E4D5] px-6 py-2.5 rounded-xl transition-all active:scale-95 shadow-lg hover:brightness-110">
-          <span className="text-sm font-bold">Launch App</span>
+        <Link href="/dashboard" className="group flex items-center space-x-2 bg-black text-[#E6E4D5] px-5 py-2.5 rounded-xl transition-all active:scale-95 hover:brightness-110">
+          <span className="text-sm font-semibold tracking-wide">Launch App</span>
           <ChevronRight className="w-4 h-4" />
         </Link>
       </nav>
 
       {/* Hero Section */}
       <section className="relative z-10 pt-32 pb-32 px-6 max-w-7xl mx-auto text-center">
-        <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-black/5 border border-black/10 text-slate-600 text-xs font-bold uppercase tracking-widest mb-10">
+        <div className="flex justify-center mb-12">
+          <img src="/favicon.jpg" alt="Logo" className="w-[280px] h-[204px] object-contain" />
+        </div>
+        <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-black/5 border border-black/10 text-slate-600 text-xs font-semibold tracking-widest mb-10">
           <Zap className="w-3 h-3 text-black" />
           <span>Institutional FX Protection</span>
         </div>
-        
         <h1 className="text-5xl md:text-7xl font-black mb-8 leading-tight tracking-tight">
           Secure Your Digital Wealth <br />
           <span className="text-black/60">Against FX Volatility</span>
         </h1>
-        
         <p className="max-w-2xl mx-auto text-lg md:text-xl text-slate-400 mb-12 leading-relaxed">
           The first decentralized FX protection protocol. Safeguard your stablecoin holdings from currency fluctuations with automated, collateral-backed hedging.
         </p>
