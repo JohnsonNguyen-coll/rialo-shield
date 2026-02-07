@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: 'Rialo Shield - FX Protection Protocol',
   description: 'Decentralized FX protection powered by RLO',
   icons: {
-    icon: '/favicon.svg',
+    icon: '/favicon.jpg',
   },
 }
 

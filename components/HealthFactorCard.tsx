@@ -26,13 +26,13 @@ export default function HealthFactorCard() {
   }
 
   return (
-    <div className="card bg-[#0A0A0A] border-[#1F1F1F] overflow-hidden relative">
+    <div className="card bg-white border-black/10 overflow-hidden relative shadow-xl">
       <div className="flex items-center justify-between mb-6">
-        <h3 className="text-lg font-black text-white flex items-center">
-          <Activity className="w-5 h-5 mr-2 text-[#E6E4D5]" />
+        <h3 className="text-lg font-black text-black flex items-center uppercase tracking-wide">
+          <Activity className="w-5 h-5 mr-2 text-black" />
           Health Factor
         </h3>
-        <ShieldCheck className="w-5 h-5 text-white/20" />
+        <ShieldCheck className="w-5 h-5 text-black/20" />
       </div>
 
       <div className="text-center py-6">
@@ -46,16 +46,16 @@ export default function HealthFactorCard() {
 
       <div className="mt-8 space-y-3">
         <div className="flex justify-between text-xs font-bold">
-          <span className="text-white/40">Liquidation Threshold</span>
-          <span className="text-white/80">1.05</span>
+          <span className="text-black/40">Liquidation Threshold</span>
+          <span className="text-black/80 font-black">1.05</span>
         </div>
-        <div className="w-full h-2 bg-white/5 rounded-full overflow-hidden">
+        <div className="w-full h-2 bg-black/5 rounded-full overflow-hidden">
           <div 
             className={`h-full transition-all duration-1000 ${avgHealthFactor < 1.5 ? 'bg-yellow-500' : 'bg-green-500'}`}
             style={{ width: `${Math.min((avgHealthFactor / 2.5) * 100, 100)}%` }}
           />
         </div>
-        <p className="text-[10px] text-white/30 font-medium leading-tight">
+        <p className="text-[10px] text-black/30 font-bold leading-tight uppercase tracking-tight">
           If your health factor drops below 1.05, your RLO collateral will be liquidated to repay the debt.
         </p>
       </div>

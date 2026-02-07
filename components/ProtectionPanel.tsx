@@ -25,17 +25,17 @@ export default function ProtectionPanel() {
   const borrowedAmount = parseFloat(collateral) ? (parseFloat(collateral) * (protectionLevel / 100)) : 0
 
   return (
-    <div className="card bg-[#0A0A0A] border-[#1F1F1F]">
+    <div className="card bg-white border-black/10 shadow-xl">
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h2 className="text-xl font-bold text-white flex items-center">
-            <Shield className="w-5 h-5 mr-3 text-[#E6E4D5]" />
+          <h2 className="text-xl font-black text-black flex items-center uppercase tracking-tighter">
+            <Shield className="w-5 h-5 mr-3 text-black" />
             Shield Configuration
           </h2>
-          <p className="text-slate-400 text-sm font-medium mt-1">Configure your collateral-backed protection</p>
+          <p className="text-slate-500 text-sm font-bold mt-1">Configure your collateral-backed protection</p>
         </div>
-        <div className="bg-[#E6E4D5]/10 px-3 py-1 rounded-lg border border-[#E6E4D5]/20">
-          <span className="text-[10px] font-bold text-[#E6E4D5] uppercase tracking-wider">Active Protocol</span>
+        <div className="bg-black px-3 py-1 rounded-lg border border-black shadow-lg">
+          <span className="text-[10px] font-black text-[#E6E4D5] uppercase tracking-widest">Active Protocol</span>
         </div>
       </div>
 
@@ -50,12 +50,12 @@ export default function ProtectionPanel() {
                 onClick={() => setSelectedCurrency(curr)}
                 className={`p-4 rounded-xl border transition-all ${
                   selectedCurrency === curr 
-                  ? 'bg-[#1F1F1F] border-[#E6E4D5] text-white' 
-                  : 'bg-[#000000] border-[#1F1F1F] text-slate-500 hover:border-slate-500'
+                  ? 'bg-black border-black text-[#E6E4D5] shadow-xl' 
+                  : 'bg-white border-black/10 text-slate-400 hover:border-black/30'
                 }`}
               >
-                <div className="font-bold text-lg">{curr}</div>
-                <div className="text-[9px] font-bold uppercase tracking-widest opacity-60">Hedge</div>
+                <div className="font-black text-lg uppercase tracking-tighter">{curr}</div>
+                <div className="text-[9px] font-black uppercase tracking-widest opacity-60">Hedge</div>
               </button>
             ))}
           </div>
@@ -66,7 +66,7 @@ export default function ProtectionPanel() {
           <div className="flex justify-between items-end px-1">
             <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">RLO Collateral</label>
             <div className="text-[10px] font-bold text-slate-400">
-              Avail: <span className="text-white">{rloBalance.toFixed(2)} RLO</span>
+              Avail: <span className="text-black font-black">{rloBalance.toFixed(2)} RLO</span>
             </div>
           </div>
           <div className="relative group">
@@ -75,11 +75,11 @@ export default function ProtectionPanel() {
               value={collateral}
               onChange={(e) => setCollateral(e.target.value)}
               placeholder="0.00"
-              className="w-full bg-[#000000] border border-[#1F1F1F] rounded-xl px-6 py-4 text-xl font-bold text-white outline-none focus:border-[#E6E4D5] transition-all"
+              className="w-full bg-white border border-black/10 rounded-xl px-6 py-4 text-xl font-black text-black outline-none focus:border-black transition-all shadow-inner"
             />
             <button 
               onClick={() => setCollateral(rloBalance.toString())}
-              className="absolute right-4 top-1/2 -translate-y-1/2 px-3 py-1 bg-[#E6E4D5]/10 hover:bg-[#E6E4D5]/20 rounded-lg text-[10px] font-bold text-[#E6E4D5] transition-colors"
+              className="absolute right-4 top-1/2 -translate-y-1/2 px-3 py-1 bg-black text-[#E6E4D5] hover:brightness-110 rounded-lg text-[10px] font-black transition-colors"
             >
               MAX
             </button>
@@ -94,10 +94,10 @@ export default function ProtectionPanel() {
                 <button
                   key={level}
                   onClick={() => setProtectionLevel(level)}
-                  className={`py-3 rounded-xl border font-bold text-sm transition-all ${
+                  className={`py-3 rounded-xl border font-black text-sm transition-all ${
                     protectionLevel === level 
-                    ? 'bg-[#E6E4D5] border-[#E6E4D5] text-black shadow-lg' 
-                    : 'bg-[#000000] border-[#1F1F1F] text-slate-500 hover:border-slate-500'
+                    ? 'bg-black border-black text-[#E6E4D5] shadow-lg' 
+                    : 'bg-white border-black/10 text-slate-400 hover:border-black/30'
                   }`}
                 >
                   {level}%
@@ -107,23 +107,23 @@ export default function ProtectionPanel() {
         </div>
 
         {/* Summary */}
-        <div className="p-5 rounded-xl bg-[#000000] border border-[#1F1F1F] space-y-3">
+        <div className="p-5 rounded-xl bg-black/5 border border-black/10 space-y-3">
           <div className="flex justify-between text-xs font-bold">
-            <span className="text-slate-500 font-medium">Protocol Funding Fee (1%)</span>
-            <span className="text-red-400">-{fundingFee.toFixed(2)} RLO</span>
+            <span className="text-slate-500 font-bold uppercase tracking-widest text-[9px]">Protocol Funding Fee (1%)</span>
+            <span className="text-red-600 font-black">-{fundingFee.toFixed(2)} RLO</span>
           </div>
           <div className="flex justify-between text-xs font-bold">
-            <span className="text-slate-500 font-medium">System Issued Debt</span>
-            <span className="text-white">{borrowedAmount.toFixed(2)} {selectedCurrency}-equiv</span>
+            <span className="text-slate-500 font-bold uppercase tracking-widest text-[9px]">System Issued Debt</span>
+            <span className="text-black font-black">{borrowedAmount.toFixed(2)} {selectedCurrency}-equiv</span>
           </div>
         </div>
 
         <button
           disabled={!collateral || parseFloat(collateral) <= 0 || parseFloat(collateral) > rloBalance}
           onClick={handleActivate}
-          className="w-full py-4 bg-[#E6E4D5] text-black rounded-xl font-bold text-base hover:brightness-110 active:scale-[0.98] disabled:opacity-30 disabled:grayscale transition-all flex items-center justify-center space-x-2 shadow-lg"
+          className="w-full py-4 bg-black text-[#E6E4D5] rounded-xl font-black text-base hover:brightness-110 active:scale-[0.98] disabled:opacity-30 disabled:grayscale transition-all flex items-center justify-center space-x-2 shadow-2xl"
         >
-          <span>Enable Protection</span>
+          <span className="uppercase tracking-widest">Enable Protection</span>
           <Zap className="w-5 h-5" />
         </button>
       </div>
