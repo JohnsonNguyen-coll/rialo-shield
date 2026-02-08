@@ -45,9 +45,9 @@ export default function LandingPage() {
             <span>Launch Dashboard</span>
             <ChevronRight className="w-5 h-5" />
           </Link>
-          <button className="w-full sm:w-auto px-10 py-5 bg-transparent border border-black text-black rounded-2xl font-bold text-lg hover:bg-black/5 transition-all active:scale-95">
+          <Link href="/docs" className="w-full sm:w-auto px-10 py-5 bg-transparent border border-black text-black rounded-2xl font-bold text-lg hover:bg-black/5 transition-all active:scale-95 flex items-center justify-center">
             View Protocol Docs
-          </button>
+          </Link>
         </div>
 
         {/* Floating Preview */}
