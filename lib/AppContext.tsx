@@ -157,7 +157,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   }
 
   const addLiquidity = (rloAmount: number) => {
-    if (rloBalance < rloAmount || rloAmount < 1000) return
+    if (rloBalance < rloAmount || rloAmount < 500) return
     
     const now = Date.now()
     const unlockDate = now + 7 * 24 * 60 * 60 * 1000 // 7 days from now
