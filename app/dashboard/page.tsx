@@ -50,7 +50,7 @@ export default function Dashboard() {
       )}
 
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-[#E6E4D5]/90 backdrop-blur-md border-b border-black/10 py-4 px-6">
+      <header className="sticky top-0 z-50 bg-[#E6E4D5]/90 backdrop-blur-md border-b border-black/10 px-6">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <Link href="/" className="flex items-center transition-transform hover:scale-105">
             <img src="/favicon.jpg" alt="Logo" className="w-[140px] h-[102px] object-contain" />
@@ -59,20 +59,18 @@ export default function Dashboard() {
           <div className="flex items-center space-x-4">
             {isConnected ? (
               <>
-                <div className="hidden md:flex items-center space-x-4 bg-white border border-black/10 rounded-xl px-4 py-2 shadow-sm">
-                  <div className="flex flex-col items-end">
-                    <span className="text-[9px] font-medium text-slate-400 uppercase tracking-widest">Your Balance</span>
-                    <div className="flex items-center space-x-3">
-                      <span className="text-sm font-semibold text-black">{rloBalance.toFixed(2)} RLO</span>
-                      <span className="text-sm font-medium text-green-600">{usdcBalance.toFixed(2)} USDC</span>
-                    </div>
+                <div className="hidden md:flex items-center space-x-3 bg-white border border-black/10 rounded-xl px-3 py-1.5 shadow-sm">
+                  <div className="flex flex-col items-center">
+                    <span className="text-[8px] font-black text-slate-400 uppercase tracking-[0.2em]">Balance</span>
+                    <span className="text-xs font-black text-black">{rloBalance.toFixed(2)} RLO</span>
                   </div>
+                  <div className="w-px h-6 bg-black/10 mx-1" />
                   <button 
                     onClick={handleFaucet}
-                    className="p-2 bg-black/5 hover:bg-black/10 rounded-lg text-black transition-colors"
+                    className="p-1.5 bg-white border border-black/10 text-black hover:bg-black/5 rounded-lg transition-all active:scale-95 shadow-sm"
                     title="Get RLO from Faucet"
                   >
-                    <Droplets className="w-5 h-5" />
+                    <Droplets className="w-4 h-4" />
                   </button>
                 </div>
               </>
