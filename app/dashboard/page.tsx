@@ -10,6 +10,7 @@ import PriceDisplay from '../../components/PriceDisplay'
 import AddLiquidity from '../../components/AddLiquidity'
 import Link from 'next/link'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
+import Footer from '@/components/Footer'
 
 export default function Dashboard() {
   const { isConnected, rloBalance, usdcBalance, faucet, refreshRates, address } = useApp()
@@ -42,7 +43,7 @@ export default function Dashboard() {
   if (!mounted) return null
 
   return (
-    <main className="min-h-screen bg-[#E6E4D5] text-black selection:bg-black/10 pb-20 font-sans">
+    <main className="min-h-screen bg-[#E6E4D5] text-black selection:bg-black/10 font-sans">
       {faucetMessage && (
         <div className="fixed top-24 left-1/2 -translate-x-1/2 z-[100] bg-black text-[#E6E4D5] px-6 py-3 rounded-xl shadow-2xl font-semibold text-sm animate-fade-in">
           {faucetMessage}
@@ -81,7 +82,7 @@ export default function Dashboard() {
       </header>
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-6 mt-12 relative z-10">
+      <div className="max-w-7xl mx-auto px-6 mt-12 pb-32 relative z-10">
         {!isConnected ? (
           <div className="flex flex-col items-center justify-center py-32 text-center animate-fade-in">
              <div className="mb-8 flex items-center justify-center">
@@ -178,9 +179,7 @@ export default function Dashboard() {
         )}
       </div>
 
-      <footer className="mt-20 py-8 text-center text-[10px] font-medium text-slate-600 tracking-wide">
-        Rialo Shield • Powered by RLO • Mainnet Environment
-      </footer>
+      <Footer />
     </main>
   )
 }

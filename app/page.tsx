@@ -3,15 +3,16 @@
 import React from 'react'
 import Link from 'next/link'
 import { Shield, Lock, Zap, BarChart3, ChevronRight, Globe, Layers } from 'lucide-react'
+import Footer from '@/components/Footer'
 
 export default function LandingPage() {
   return (
     <div className="min-h-screen bg-[#E6E4D5] text-black selection:bg-black/10 overflow-x-hidden font-sans">
       {/* Navigation */}
       <nav className="relative z-50 flex items-center justify-between px-6 py-2 max-w-7xl mx-auto border-b border-black/10">
-          <Link href="/" className="flex items-center transition-transform hover:scale-105">
-            <img src="/favicon.jpg" alt="Logo" className="w-[140px] h-[102px] object-contain" />
-          </Link>
+        <Link href="/" className="flex items-center transition-transform hover:scale-105">
+          <img src="/favicon.jpg" alt="Logo" className="w-[140px] h-[102px] object-contain" />
+        </Link>
         <div className="hidden md:flex items-center space-x-10 text-base font-medium tracking-wide text-black/60">
           <a href="#features" className="hover:text-black transition-colors">Features</a>
           <a href="#protection" className="hover:text-black transition-colors">Protocol</a>
@@ -272,9 +273,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <footer className="py-12 px-6 border-t border-black/10 text-center text-slate-500 text-xs font-bold uppercase tracking-widest">
-        <p>© 2026 Rialo Shield Protocol • All Rights Reserved</p>
-      </footer>
+      <Footer />
     </div>
   )
 }

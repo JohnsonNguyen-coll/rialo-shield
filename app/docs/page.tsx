@@ -3,6 +3,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { ChevronLeft, Shield, Book, Zap, Database, Globe, Lock, Info } from 'lucide-react'
+import Footer from '@/components/Footer'
 
 export default function ProtocolDocs() {
   return (
@@ -56,9 +57,9 @@ export default function ProtocolDocs() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
               <div className="p-8 rounded-3xl bg-white border border-black/10 shadow-sm">
                 <Shield className="w-10 h-10 mb-6 text-black" />
-                <h3 className="text-xl font-black mb-4Internal Protection">Protection Vaults</h3>
+                <h3 className="text-xl font-black mb-4">Protection Vaults</h3>
                 <p className="text-sm text-black/60 leading-relaxed">
-                  Users deposit stablecoins into Protection Vaults. These vaults interact with our liquidity layer to create synthetic short positions against specific local currencies (BRL, EUR, MXN).
+                  Users deposit RLO into Protection Vaults. These vaults interact with our liquidity layer to create synthetic short positions against specific local currencies (BRL, EUR, MXN).
                 </p>
               </div>
               <div className="p-8 rounded-3xl bg-white border border-black/10 shadow-sm">
@@ -139,18 +140,8 @@ export default function ProtocolDocs() {
           </section>
         </div>
 
-        <footer className="mt-32 pt-12 border-t border-black/10 flex flex-col items-center justify-center space-y-8">
-            <img src="/favicon.jpg" alt="Logo" className="w-[120px] h-[88px] object-contain opacity-40 grayscale" />
-            <div className="text-center text-slate-500 text-[10px] font-bold uppercase tracking-widest">
-                <p>© 2026 Rialo Shield Protocol • Documentation</p>
-                <div className="mt-2 flex items-center justify-center space-x-4">
-                    <a href="#" className="hover:text-black transition-colors">Github</a>
-                    <a href="#" className="hover:text-black transition-colors">Twitter</a>
-                    <a href="#" className="hover:text-black transition-colors">Discord</a>
-                </div>
-            </div>
-        </footer>
       </main>
+      <Footer />
     </div>
   )
 }
