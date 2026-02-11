@@ -4,7 +4,7 @@ import { Shield, Zap, Globe, MessageCircle } from 'lucide-react'
 
 export default function Footer() {
   return (
-    <footer className="bg-black text-[#E6E4D5] pt-10 pb-6 px-6 w-full">
+    <footer className="bg-black text-[#E6E4D5] pt-10 pb-6 px-6 w-full font-footer">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           {/* Brand Column */}
@@ -37,7 +37,7 @@ export default function Footer() {
 
           {/* Protocol Column */}
           <div>
-            <h4 className="text-white font-black uppercase tracking-widest text-[8px] mb-5">Protocol</h4>
+            <h4 className="text-white font-bold text-base font-footer mb-5">Protocol</h4>
             <ul className="space-y-2 text-[12px] font-medium">
               <li><Link href="/#features" className="text-[#E6E4D5]/60 hover:text-white transition-colors">Features</Link></li>
               <li><Link href="/#protection" className="text-[#E6E4D5]/60 hover:text-white transition-colors">Shield Mechanisms</Link></li>
@@ -48,7 +48,7 @@ export default function Footer() {
 
           {/* Ecosystem Column */}
           <div>
-            <h4 className="text-white font-black uppercase tracking-widest text-[8px] mb-5">Ecosystem</h4>
+            <h4 className="text-white font-bold text-base font-footer mb-5">Ecosystem</h4>
             <ul className="space-y-2 text-[12px] font-medium">
               <li><Link href="/dashboard" className="text-[#E6E4D5]/60 hover:text-white transition-colors">Launch App</Link></li>
               <li><a href="#" className="text-[#E6E4D5]/60 hover:text-white transition-colors">Governance</a></li>
@@ -59,7 +59,7 @@ export default function Footer() {
 
           {/* Security Column */}
           <div>
-            <h4 className="text-white font-black uppercase tracking-widest text-[8px] mb-5">Security</h4>
+            <h4 className="text-white font-bold text-base font-footer mb-5">Security</h4>
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <div className="w-6 h-6 rounded-lg bg-green-500/10 flex items-center justify-center">
